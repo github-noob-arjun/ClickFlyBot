@@ -21,11 +21,11 @@ Short = Client('clickyfly bot',
 @Short.on_message(filters.command('start') & filters.private)
 async def start(bot, message):
     await message.reply(
-        text=f"**🙌 Hi {message.chat.first_name}!** \n\nThis is **ClickyFly URL Shorter Bot**. Just send me any big link and get short link.",
+        text=f"**🙌 Hi {message.from_user.mention}!** \n\nThis is **ClickyFly URL Shorter Bot**.\nJust send me any big link and get short link.",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton('✅ 𝗝𝗢𝗜𝗡 𝗡𝗢𝗪 ✅', url='https://t.me/PYRO_BOTZ')
+                    InlineKeyboardButton('✅ 𝗝𝗢𝗜𝗡 𝗡𝗢𝗪 ✅', url='https://t.me/PyroBotz')
                 ]
             ]
         ),
