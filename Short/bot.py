@@ -4,13 +4,13 @@ import aiohttp
 from pyrogram import Client, filters
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 
-API_ID = environ.get('API_ID')
-API_HASH = environ.get('API_HASH')
-BOT_TOKEN = environ.get('BOT_TOKEN')
-API_KEY = environ.get('API_KEY')
+API_ID = 18988485
+API_HASH = "b8b78728c7f08859bfa98f5cbb250dc8"
+BOT_TOKEN = "5286545186:AAHXc48Cj366khTJvdqw500ZWdbuHPg8H48"
+API_KEY = "e980180fdf60f4dff132eb393d4d3e5763480e5f"
 
 
-bot = Client('clickyfly bot',
+Short = Client('clickyfly bot',
              api_id=API_ID,
              api_hash=API_HASH,
              bot_token=BOT_TOKEN,
@@ -18,24 +18,22 @@ bot = Client('clickyfly bot',
              sleep_threshold=10)
 
 
-@bot.on_message(filters.command('start') & filters.private)
+@Short.on_message(filters.command('start') & filters.private)
 async def start(bot, message):
     await message.reply(
-        text=f"**Hi {message.chat.first_name}!** \n\nThis is **ClickyFly URL Shorter Bot**. Just send me any big link and get short link.",
+        text=f"**🙌 Hi {message.chat.first_name}!** \n\nThis is **ClickyFly URL Shorter Bot**. Just send me any big link and get short link.",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton('Bots Updates Channel', url='https://t.me/Discovery_Updates')
-                ],
-                [
-                    InlineKeyboardButton('Support Group', url='https://t.me/linux_repo')
+                    InlineKeyboardButton('✅ 𝗝𝗢𝗜𝗡 𝗡𝗢𝗪 ✅', url='https://t.me/PYRO_BOTZ')
                 ]
             ]
-        )
+        ),
+        quote=True
     )
 
 
-@bot.on_message(filters.regex(r'https?://[^\s]+') & filters.private)
+@Short.on_message(filters.regex(r'https?://[^\s]+') & filters.private)
 async def link_handler(bot, message):
     link = message.matches[0].group(0)
     try:
@@ -45,7 +43,11 @@ async def link_handler(bot, message):
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton('Open Link', url=short_link)
+                        InlineKeyboardButton('Open Link', url=short_link),
+                        InlineKeyboardButton('Share Link', url=f"https://telegram.me/share/url?url={short_link}")
+                    ],
+                    [
+                        InlineKeyboardButton('✅ 𝗝𝗢𝗜𝗡 𝗡𝗢𝗪 ✅', url='https://t.me/PYRO_BOTZ')
                     ]
                 ]
             ),
@@ -64,4 +66,3 @@ async def get_shortlink(link):
             return data["shortenedUrl"]
 
 
-bot.run()
