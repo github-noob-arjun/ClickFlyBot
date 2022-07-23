@@ -10,6 +10,17 @@ BOT_TOKEN = "5286545186:AAHXc48Cj366khTJvdqw500ZWdbuHPg8H48"
 API_KEY = "e980180fdf60f4dff132eb393d4d3e5763480e5f"
 
 
+
+START_BUTTONS = InlineKeyboardMarkup(
+    [
+        [
+            InlineKeyboardButton('✅ 𝗠𝗼𝗿𝗲 𝗕𝗼𝘁𝘇 ✅', url='https://t.me/PyroBotz')
+        ],[
+            InlineKeyboardButton('🐞 𝖱𝖾𝗉𝗈𝗋𝗍 𝖡𝗎𝗀 🐞', url='https://t.me/PYRO_BOTZ_CHAT')
+        ]
+    ]
+)
+
 Short = Client('clickyfly bot',
              api_id=API_ID,
              api_hash=API_HASH,
@@ -22,16 +33,9 @@ Short = Client('clickyfly bot',
 async def start(bot, message):
     await message.reply(
         text=f"**🙌 Hi {message.from_user.mention}!** \n\nThis is **ClickyFly URL Shorter Bot**.\nJust send me any big link and get short link.",
-        reply_markup=InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton('✅ 𝗝𝗢𝗜𝗡 𝗡𝗢𝗪 ✅', url='https://t.me/PyroBotz')
-                ]
-            ]
-        ),
+        reply_markup=START_BUTTONS,
         quote=True
     )
-
 
 @Short.on_message(filters.regex(r'https?://[^\s]+') & filters.private)
 async def link_handler(bot, message):
