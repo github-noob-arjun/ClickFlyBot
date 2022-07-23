@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(name='Short',
-      version='0.1.3',
+      version='0.1.4',
       description='Python module for interacting with Chatbase APIs',
       url='https://github.com/github-noob-arjun/ClickFlyBot',
       author='Github',
